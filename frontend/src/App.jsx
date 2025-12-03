@@ -3,7 +3,7 @@ import Loginsignup from './pages/Loginsignup';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
-import JobDetail from './components/JobDetail';
+import JobDetail from './components/JobDetails';
 import Jobs from './pages/Jobs';
 import { departments, jobs, forms, helpDeskCategories } from './data/mockData';
 
