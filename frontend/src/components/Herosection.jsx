@@ -12,7 +12,7 @@ export default function Herosection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
+
           {/* Text Content */}
           <div className="flex-1 text-center lg:text-left z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium mb-6 animate-fade-in-up">
@@ -41,60 +41,28 @@ export default function Herosection() {
               </button>
             </div>
 
-            
+
           </div>
 
           {/* Hero Image / Visuals */}
           <div className="flex-1 w-full relative lg:h-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100 bg-white">
-              <img 
+              <img
                 src={hrimage}
-                alt="Modern Office Team" 
+                alt="Modern Office Team"
                 className="w-full h-auto object-cover"
               />
-              
-            
-          </div>
-          </div>
-            {/* Floating Cards for Visual Interest
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 hidden sm:block animate-bounce-slow">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-100 rounded-lg">
-                    <Users className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500">Total Employees</p>
-                    <p className="text-lg font-bold text-slate-800">1,240</p>
-                  </div>
-                </div>
-              </div>
-              
-
-              <div className="absolute top-6 right-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 hidden sm:block animate-bounce-slow delay-150">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <BarChart className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500">Productivity</p>
-                    <p className="text-lg font-bold text-slate-800">+28%</p>
-                  </div>
-                </div>
-              </div>
-             */}
-            
-            {/* Decorative Dots */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-24 h-24 opacity-20">
-              <div className="grid grid-cols-6 gap-2">
-                {[...Array(36)].map((_, i) => (
-                  <div key={i} className="w-1 h-1 bg-blue-600 rounded-full"></div>
-                ))}
-              </div>
             </div>
-            
+          </div>
 
-            
-
+          {/* Decorative Dots */}
+          <div className="absolute -z-10 -bottom-10 -right-10 w-24 h-24 opacity-20">
+            <div className="grid grid-cols-6 gap-2">
+              {[...Array(36)].map((_, i) => (
+                <div key={i} className="w-1 h-1 bg-blue-600 rounded-full"></div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
