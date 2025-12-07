@@ -1,13 +1,14 @@
 import React from 'react'
 import { Home, Users, Briefcase, FileText, HelpCircle, LogOut, ChevronDown, Menu, X } from 'lucide-react'
 
-export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, departments, jobs, forms, helpDeskCategories }) {
+export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, setSelectedForm, setSelectedHelpDeskCategory, departments, jobs, forms, helpDeskCategories }) {
     const navLinks = [
         { name: 'Home', icon: Home, hasDropdown: false },
         { name: 'Departments', icon: Users, hasDropdown: true, items: departments },
         { name: 'Jobs', icon: Briefcase, hasDropdown: true, items: jobs?.map(j => j.title) },
         { name: 'Forms', icon: FileText, hasDropdown: true, items: forms },
-        { name: 'HelpDesk', icon: HelpCircle, hasDropdown: true, items: helpDeskCategories }
+        { name: 'HelpDesk', icon: HelpCircle, hasDropdown: true, items: helpDeskCategories },
+        { name: 'About Us', icon: Users, hasDropdown: false }
     ];
 
     const [hoveredMenu, setHoveredMenu] = React.useState(null)
@@ -42,59 +43,122 @@ export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, 
                 {navLinks.map((link, i) => (
                     <div
                         key={i}
-                        className="relative group max-md:w-full max-md:text-center"
-                        onMouseEnter={() => link.hasDropdown && setHoveredMenu(link.name)}
-                        onMouseLeave={() => setHoveredMenu(null)}
+                        className="relative group max-md:w-full max-md:border-b max-md:border-slate-100 last:border-none"
+                        onMouseEnter={() => window.innerWidth >= 768 && link.hasDropdown && setHoveredMenu(link.name)}
+                        onMouseLeave={() => window.innerWidth >= 768 && setHoveredMenu(null)}
                     >
                         <button
                             onClick={() => {
-                                if (!link.hasDropdown) {
-                                    setCurrentPage('home');
+                                if (link.hasDropdown) {
+                                    // Toggle menu on mobile
+                                    if (window.innerWidth < 768) {
+                                        setHoveredMenu(hoveredMenu === link.name ? null : link.name);
+                                    }
+                                } else {
+                                    if (link.name === 'About Us') {
+                                        setCurrentPage('aboutus');
+                                    } else {
+                                        setCurrentPage('home');
+                                    }
                                     setSelectedJob(null);
                                     setIsMenuOpen(false);
                                 }
                             }}
-                            className={`flex items-center gap-1 hover:text-gray-600 transition-all ${isScrolled ? "text-gray-700" : "text-gray-800"}`}
+                            className={`flex items-center justify-between md:justify-start gap-1 w-full md:w-auto p-4 md:p-0 hover:text-gray-600 transition-all ${isScrolled ? "text-gray-700" : "text-gray-800"}`}
                         >
-                            <span>{link.name}</span>
-                            {link.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                            <span className="font-semibold md:font-medium">{link.name}</span>
+                            {link.hasDropdown && (
+                                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hoveredMenu === link.name ? 'rotate-180' : ''}`} />
+                            )}
                         </button>
 
-                        {link.hasDropdown && hoveredMenu === link.name && (
-                            <div className="absolute bg-white font-normal flex flex-col gap-2 w-max rounded-lg p-4 top-full left-0 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shadow-lg mt-1 z-50">
-                                {link.name === 'Jobs' ? (
-                                    link.items?.map((jobTitle, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => {
-                                                setSelectedJob(jobs.find(j => j.title === jobTitle));
-                                                setCurrentPage('job-detail');
-                                                setHoveredMenu(null);
-                                                setIsMenuOpen(false);
-                                            }}
-                                            className="text-left hover:translate-x-1 hover:text-slate-500 transition-all"
-                                        >
-                                            {jobTitle}
-                                        </button>
-                                    ))
-                                ) : (
-                                    link.items?.map((subItem, idx) => (
-                                        <button
-                                            key={idx}
-                                            onClick={() => {
-                                                if (link.name === 'HelpDesk' && subItem === 'Support Partner Details') {
-                                                    setCurrentPage('support-partners');
-                                                    setSelectedJob(null);
-                                                }
-                                                setHoveredMenu(null);
-                                                setIsMenuOpen(false);
-                                            }}
-                                            className="text-left hover:translate-x-1 hover:text-slate-500 transition-all cursor-pointer block w-full"
-                                        >
-                                            {subItem}
-                                        </button>
-                                    ))
-                                )}
+                        {/* Dropdown Menu */}
+                        {link.hasDropdown && (
+                            <div className={`
+                                md:absolute md:bg-white md:shadow-lg md:rounded-lg md:w-max md:top-full md:left-0 md:mt-2
+                                max-md:bg-slate-50 max-md:w-full max-md:overflow-hidden transition-all duration-300 ease-in-out
+                                ${hoveredMenu === link.name ? 'max-md:max-h-[500px] opacity-100 translate-y-0 visible z-50' : 'max-md:max-h-0 md:opacity-0 md:translate-y-2 md:invisible max-md:opacity-100'}
+                            `}>
+                                <div className="p-2 md:p-3 flex flex-col gap-1">
+                                    {link.name === 'Jobs' ? (
+                                        link.items?.map((jobTitle, idx) => (
+                                            <button
+                                                key={idx}
+                                                onClick={() => {
+                                                    setSelectedJob(jobs.find(j => j.title === jobTitle));
+                                                    setCurrentPage('job-detail');
+                                                    setHoveredMenu(null);
+                                                    setIsMenuOpen(false);
+                                                }}
+                                                className="text-left w-full px-4 py-3 md:py-2 md:px-3 hover:bg-slate-100 md:hover:bg-slate-50 rounded-lg text-slate-600 hover:text-blue-600 transition-colors text-sm"
+                                            >
+                                                {jobTitle}
+                                            </button>
+                                        ))
+                                    ) : (
+                                        link.items?.map((subItem, idx) => {
+                                            if (subItem === 'HR IS') {
+                                                return (
+                                                    <div key={idx} className="relative group/submenu w-full">
+                                                        <button
+                                                            className="flex items-center justify-between w-full text-left px-4 py-3 md:py-2 md:px-3 hover:bg-slate-100 md:hover:bg-slate-50 rounded-lg text-slate-600 hover:text-blue-600 transition-colors text-sm"
+                                                        >
+                                                            <span>{subItem}</span>
+                                                            <span className="text-xs opacity-50">▶</span>
+                                                        </button>
+                                                        {/* Nested Menu */}
+                                                        <div className="md:absolute md:left-full md:top-0 md:ml-2 md:bg-white md:shadow-lg md:p-2 md:w-40 
+                                                            max-md:pl-8 max-md:bg-slate-100
+                                                            md:opacity-0 md:invisible group-hover/submenu:opacity-100 group-hover/submenu:visible transition-all duration-300 rounded-lg">
+                                                            <button
+                                                                className="block w-full text-left px-4 py-2 hover:bg-slate-200 md:hover:bg-slate-50 md:rounded text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                                                                onClick={() => {
+                                                                    setCurrentPage('timesheet');
+                                                                    setHoveredMenu(null);
+                                                                    setIsMenuOpen(false);
+                                                                }}
+                                                            >
+                                                                Time Sheet
+                                                            </button>
+                                                            <button
+                                                                className="block w-full text-left px-4 py-2 hover:bg-slate-200 md:hover:bg-slate-50 md:rounded text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                                                                onClick={() => {
+                                                                    setCurrentPage('apply-leave');
+                                                                    setHoveredMenu(null);
+                                                                    setIsMenuOpen(false);
+                                                                }}
+                                                            >
+                                                                Apply Leave
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            }
+                                            return (
+                                                <button
+                                                    key={idx}
+                                                    onClick={() => {
+                                                        if (link.name === 'HelpDesk' && subItem === 'Support Partner Details') {
+                                                            setCurrentPage('support-partners');
+                                                            setSelectedJob(null);
+                                                        } else if (link.name === 'Forms') {
+                                                            setSelectedForm(subItem);
+                                                            setCurrentPage('form-template');
+                                                        } else if (link.name === 'HelpDesk' && subItem !== 'Support Partner Details' && subItem !== 'HR IS') {
+                                                            setSelectedHelpDeskCategory(subItem);
+                                                            setCurrentPage('help-desk');
+                                                        }
+                                                        setHoveredMenu(null);
+                                                        setIsMenuOpen(false);
+                                                    }}
+                                                    className="text-left w-full px-4 py-3 md:py-2 md:px-3 hover:bg-slate-100 md:hover:bg-slate-50 rounded-lg text-slate-600 hover:text-blue-600 transition-colors text-sm"
+                                                >
+                                                    {subItem}
+                                                </button>
+                                            );
+                                        })
+                                    )}
+                                </div>
                             </div>
                         )}
                     </div>

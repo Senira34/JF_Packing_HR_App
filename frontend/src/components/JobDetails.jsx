@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, ArrowLeft, CheckCircle, Phone, MapPin, Building2, User, X } from 'lucide-react';
+import { Briefcase, ArrowLeft, CheckCircle, Phone, MapPin, Building2, User, X, Upload, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 // Importing the image directly if using a bundler like Vite usually requires import, or using /src/assets path if public.
 // Since the user is using Vite, standard import is preferred, or absolute path from public.
@@ -8,6 +8,9 @@ import manageImage from '../assets/manager.jpeg';
 
 export default function JobDetail({ selectedJob, onBack }) {
   const [showSupportModal, setShowSupportModal] = useState(false);
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [showMsgModal, setShowMsgModal] = useState(false);
+  const [showCertModal, setShowCertModal] = useState(false);
 
   if (!selectedJob) return null;
 
@@ -65,16 +68,26 @@ export default function JobDetail({ selectedJob, onBack }) {
               </li>
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 flex-wrap">
-              <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-600/20">
+            <div className="flex flex-col lg:flex-row gap-3 pt-4 items-center w-full">
+              <button
+                onClick={() => setShowApplyModal(true)}
+                className="flex-1 w-full lg:w-auto px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-600/20 text-sm whitespace-nowrap justify-center"
+              >
                 Apply for this Position
               </button>
               <button
                 onClick={() => setShowSupportModal(true)}
-                className="px-8 py-3 bg-slate-800 text-white hover:bg-slate-900 rounded-xl font-semibold transition-all shadow-lg shadow-slate-800/20 flex items-center gap-2"
+                className="flex-1 w-full lg:w-auto px-4 py-3 bg-slate-800 text-white hover:bg-slate-900 rounded-xl font-semibold transition-all shadow-lg shadow-slate-800/20 flex items-center justify-center gap-2 text-sm whitespace-nowrap"
               >
                 <User className="w-5 h-5" />
                 Support Partner Details
+              </button>
+              <button
+                onClick={() => setShowCertModal(true)}
+                className="flex-1 w-full lg:w-auto px-4 py-3 bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-xl font-semibold transition-all shadow-lg shadow-slate-200/20 flex items-center justify-center gap-2 text-sm whitespace-nowrap"
+              >
+                <Upload className="w-5 h-5" />
+                Upload Certificates
               </button>
             </div>
           </div>
@@ -148,12 +161,21 @@ export default function JobDetail({ selectedJob, onBack }) {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => setShowSupportModal(false)}
-                    className="w-full py-4 bg-slate-900 hover:bg-black text-white font-semibold rounded-xl transition-all shadow-lg shadow-slate-900/10"
-                  >
-                    Close Details
-                  </button>
+                  <div className="flex gap-4 pt-4">
+                    <button
+                      onClick={() => setShowMsgModal(true)}
+                      className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2"
+                    >
+                      <MessageSquare className="w-5 h-5" />
+                      Send Message
+                    </button>
+                    <button
+                      onClick={() => setShowSupportModal(false)}
+                      className="flex-1 py-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl transition-all"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -175,6 +197,193 @@ export default function JobDetail({ selectedJob, onBack }) {
                 >
                   <X className="w-5 h-5" />
                 </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Apply Job Modal */}
+      <AnimatePresence>
+        {showApplyModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowApplyModal(false)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden z-10"
+            >
+              <div className="p-8">
+                <div className="flex justify-between items-center mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-900">Apply for this Position</h3>
+                    <p className="text-slate-500">Share your details and CV with us</p>
+                  </div>
+                  <button
+                    onClick={() => setShowApplyModal(false)}
+                    className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+                  >
+                    <X className="w-6 h-6 text-slate-500" />
+                  </button>
+                </div>
+
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  setShowApplyModal(false);
+                  alert("Application Submitted Successfully!");
+                }} className="space-y-6">
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-bold text-slate-700">Full Name</label>
+                      <input type="text" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="John Doe" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-bold text-slate-700">Email Address</label>
+                      <input type="email" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="john@example.com" />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-bold text-slate-700">Phone Number</label>
+                      <input type="tel" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="+94 77 123 4567" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="block text-sm font-bold text-slate-700">Portfolio / LinkedIn</label>
+                      <input type="url" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="https://linkedin.com/in/..." />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-bold text-slate-700">Upload CV / Resume</label>
+                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-8 text-center hover:bg-slate-50 transition-colors cursor-pointer group">
+                      <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <Upload className="w-6 h-6" />
+                      </div>
+                      <p className="text-sm font-medium text-slate-700">Click to upload or drag and drop</p>
+                      <p className="text-xs text-slate-400 mt-1">PDF, DOCX (Max 5MB)</p>
+                      <input type="file" className="hidden" accept=".pdf,.doc,.docx" />
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    <button type="submit" className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 transition-all active:scale-[0.98]">
+                      Submit Application
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Message Modal */}
+      <AnimatePresence>
+        {showMsgModal && (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowMsgModal(false)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden z-10"
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl font-bold text-slate-900">Send Message</h3>
+                  <button onClick={() => setShowMsgModal(false)} className="p-2 hover:bg-slate-100 rounded-full">
+                    <X className="w-5 h-5 text-slate-500" />
+                  </button>
+                </div>
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  setShowMsgModal(false);
+                  alert("Message Sent Successfully!");
+                }} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Subject</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Inquiry about..." />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Message</label>
+                    <textarea required rows="4" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your message here..."></textarea>
+                  </div>
+                  <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Upload Certificates Modal */}
+      <AnimatePresence>
+        {showCertModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowCertModal(false)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden z-10"
+            >
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-xl font-bold text-slate-900">Upload Certificates</h3>
+                  <button onClick={() => setShowCertModal(false)} className="p-2 hover:bg-slate-100 rounded-full">
+                    <X className="w-5 h-5 text-slate-500" />
+                  </button>
+                </div>
+                <form onSubmit={(e) => {
+                  e.preventDefault();
+                  setShowCertModal(false);
+                  alert("Certificates Uploaded Successfully!");
+                }} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Certificate Name</label>
+                    <input type="text" required className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="e.g. Degree Certificate" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="block text-sm font-bold text-slate-700">Upload File</label>
+                    <div className="border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:bg-slate-50 transition-colors cursor-pointer">
+                      <Upload className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                      <p className="text-sm font-medium text-slate-700">Click or drag file here</p>
+                      <p className="text-xs text-slate-400">PDF, JPG, PNG (Max 5MB)</p>
+                      <input type="file" className="hidden" accept=".pdf,.jpg,.png" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-slate-700 mb-1">Additional Comments</label>
+                    <textarea rows="2" className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500" placeholder="Any details..."></textarea>
+                  </div>
+                  <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20">
+                    Submit Certificates
+                  </button>
+                </form>
               </div>
             </motion.div>
           </div>

@@ -25,21 +25,18 @@ export default function Herosection() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6 tracking-tight">
               Empower Your <br className="hidden lg:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Workforce Potential
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-indigo-600">
+                JF Packaging
               </span>
+              <br className="hidden lg:block" />
+              Workforce Potential
             </h1>
 
             <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               Streamline operations, boost engagement, and make data-driven decisions with our all-in-one HR solution. Designed for modern teams.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button onClick={() => window.open("https://jfpackaging.lk/products", "_blank")} className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-2 group">
-                View Our Website to Get Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+
 
 
           </div>
