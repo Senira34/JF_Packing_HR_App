@@ -38,5 +38,6 @@ export const helpDeskCategories = [
   'IT Support',
   'HR Queries',
   'Facilities Management',
-  'General Inquiries'
+  'General Inquiries',
+  'HR IS'
 ];

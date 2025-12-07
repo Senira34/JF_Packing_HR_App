@@ -16,7 +16,7 @@ export default function WhoWeAre() {
                     {/* Left Content */}
                     <div className="space-y-8">
                         <div className="space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-bold text-blue-600 tracking-tight">
+                            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
                                 Who we are?
                             </h2>
                             <h3 className="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
@@ -54,60 +54,61 @@ export default function WhoWeAre() {
                                 {/* Sedex Logo Area */}
                                 <div className="flex items-center gap-4 text-3xl font-bold text-slate-800">
                                     <span className="text-slate-600">Sedex</span>
-                                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                                    <span>Member</span>
+                                    <span className="text-slate-600 mt-1">|</span>
+                                    <span className="text-slate-600">Member</span>
                                 </div>
 
                                 {/* Certification Badges Row */}
-                                <div className="flex flex-wrap justify-center gap-6">
+                                <div className="flex flex-wrap justify-center gap-x-8 gap-y-10">
                                     {/* Badge 1 */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 border-4 border-blue-500 rounded-full flex items-center justify-center text-blue-500 font-bold text-sm relative">
+                                    <div className="relative group">
+                                        <div className="w-20 h-20 border-[3px] border-orange-500 rounded-full flex items-center justify-center text-orange-500 bg-white z-10 relative">
                                             <CheckCircle className="w-8 h-8" />
-                                            <span className="absolute -bottom-2 text-[10px] bg-white px-1 text-slate-500">SGS</span>
-                                            <span className="absolute -top-2 text-[8px] bg-white px-1 text-slate-400 rotate-[-45deg] left-0 origin-bottom-right">FSSC 20000</span>
                                         </div>
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 whitespace-nowrap z-20">FSSC 20000</span>
+                                        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 z-20">SGS</span>
                                     </div>
-                                    {/* Badge 2 */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 border-4 border-blue-500 rounded-full flex items-center justify-center text-blue-500 font-bold text-sm relative">
-                                            <CheckCircle className="w-8 h-8" />
-                                            <span className="absolute -bottom-2 text-[10px] bg-white px-1 text-slate-500">SGS</span>
-                                            <span className="absolute -top-2 text-[8px] bg-white px-1 text-slate-400">GMP</span>
-                                        </div>
-                                    </div>
-                                    {/* Badge 3 */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 border-4 border-blue-500 rounded-full flex items-center justify-center text-blue-500 font-bold text-sm relative">
-                                            <CheckCircle className="w-8 h-8" />
-                                            <span className="absolute -bottom-2 text-[10px] bg-white px-1 text-slate-500">SGS</span>
-                                            <span className="absolute -top-2 text-[8px] bg-white px-1 text-slate-400">HACCP</span>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                {/* ISO Badges Row */}
-                                <div className="flex flex-wrap justify-center gap-6">
+                                    {/* Badge 2 */}
+                                    <div className="relative group">
+                                        <div className="w-20 h-20 border-[3px] border-orange-500 rounded-full flex items-center justify-center text-orange-500 bg-white z-10 relative">
+                                            <CheckCircle className="w-8 h-8" />
+                                        </div>
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 whitespace-nowrap z-20">GMP</span>
+                                        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 z-20">SGS</span>
+                                    </div>
+
+                                    {/* Badge 3 */}
+                                    <div className="relative group">
+                                        <div className="w-20 h-20 border-[3px] border-orange-500 rounded-full flex items-center justify-center text-orange-500 bg-white z-10 relative">
+                                            <CheckCircle className="w-8 h-8" />
+                                        </div>
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 whitespace-nowrap z-20">HACCP</span>
+                                        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 z-20">SGS</span>
+                                    </div>
+
                                     {/* Badge 4 */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 border-4 border-blue-500 rounded-full flex items-center justify-center text-blue-500 font-bold text-sm relative">
+                                    <div className="relative group">
+                                        <div className="w-20 h-20 border-[3px] border-orange-500 rounded-full flex items-center justify-center text-orange-500 bg-white z-10 relative">
                                             <CheckCircle className="w-8 h-8" />
-                                            <span className="absolute -bottom-2 text-[10px] bg-white px-1 text-slate-500">SGS</span>
-                                            <span className="absolute -top-2 text-[8px] bg-white px-1 text-slate-400 rotate-[-45deg] left-0 origin-bottom-right">ISO 9001</span>
                                         </div>
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 whitespace-nowrap z-20">ISO 9001</span>
+                                        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 z-20">SGS</span>
                                     </div>
+
                                     {/* Badge 5 */}
-                                    <div className="flex flex-col items-center">
-                                        <div className="w-16 h-16 md:w-20 md:h-20 border-4 border-blue-500 rounded-full flex items-center justify-center text-blue-500 font-bold text-sm relative">
+                                    <div className="relative group">
+                                        <div className="w-20 h-20 border-[3px] border-orange-500 rounded-full flex items-center justify-center text-orange-500 bg-white z-10 relative">
                                             <CheckCircle className="w-8 h-8" />
-                                            <span className="absolute -bottom-2 text-[10px] bg-white px-1 text-slate-500">SGS</span>
-                                            <span className="absolute -top-2 text-[8px] bg-white px-1 text-slate-400">ISO 22000</span>
                                         </div>
+                                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 whitespace-nowrap z-20">ISO 22000</span>
+                                        <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-bold text-slate-500 z-20">SGS</span>
                                     </div>
+
                                     {/* UKAS Badge */}
-                                    <div className="flex flex-col items-center justify-center w-16 h-20 md:w-20 md:h-24 border border-slate-300 p-2">
+                                    <div className="flex flex-col items-center justify-center w-20 h-24 border border-slate-300 p-2 bg-white">
                                         <div className="text-[10px] text-center font-bold">UKAS</div>
-                                        <div className="text-[8px] text-center text-slate-500">MANAGEMENT SYSTEMS</div>
+                                        <div className="text-[8px] text-center text-slate-500 leading-tight my-1">MANAGEMENT SYSTEMS</div>
                                         <div className="text-[10px] font-bold">0005</div>
                                     </div>
                                 </div>
