@@ -6,12 +6,19 @@ import Footer from './components/Footer';
 import JobDetail from './components/JobDetails';
 import SupportPartnerView from './components/SupportPartnerView';
 import Jobs from './pages/Jobs';
+import AboutUs from './pages/AboutUs';
+import TimeSheet from './pages/TimeSheet';
+import ApplyLeave from './pages/ApplyLeave';
+import FormTemplateView from './components/FormTemplateView';
+import HelpDeskView from './components/HelpDeskView';
 import { departments, jobs, forms, helpDeskCategories } from './data/mockData';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedForm, setSelectedForm] = useState(null);
+  const [selectedHelpDeskCategory, setSelectedHelpDeskCategory] = useState(null);
 
   const handleJobClick = (job) => {
     setSelectedJob(job);
@@ -34,6 +41,8 @@ function App() {
         setIsLoggedIn={setIsLoggedIn}
         setCurrentPage={setCurrentPage}
         setSelectedJob={setSelectedJob}
+        setSelectedForm={setSelectedForm}
+        setSelectedHelpDeskCategory={setSelectedHelpDeskCategory}
         departments={departments}
         jobs={jobs}
         forms={forms}
@@ -63,6 +72,27 @@ function App() {
         )}
         {currentPage === 'support-partners' && (
           <SupportPartnerView
+            onBack={() => setCurrentPage('home')}
+          />
+        )}
+        {currentPage === 'aboutus' && (
+          <AboutUs />
+        )}
+        {currentPage === 'timesheet' && (
+          <TimeSheet />
+        )}
+        {currentPage === 'apply-leave' && (
+          <ApplyLeave />
+        )}
+        {currentPage === 'form-template' && (
+          <FormTemplateView
+            formName={selectedForm}
+            onBack={() => setCurrentPage('home')}
+          />
+        )}
+        {currentPage === 'help-desk' && (
+          <HelpDeskView
+            category={selectedHelpDeskCategory}
             onBack={() => setCurrentPage('home')}
           />
         )}
