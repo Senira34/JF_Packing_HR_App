@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import JobDetail from './components/JobDetails';
+import SupportPartnerView from './components/SupportPartnerView';
 import Jobs from './pages/Jobs';
 import { departments, jobs, forms, helpDeskCategories } from './data/mockData';
 
@@ -16,6 +17,11 @@ function App() {
     setSelectedJob(job);
     setCurrentPage('job-detail');
   };
+
+  // Scroll to top whenever currentPage changes
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
   // Main App Render
   if (!isLoggedIn) {
@@ -53,6 +59,11 @@ function App() {
               setCurrentPage('home');
               setSelectedJob(null);
             }}
+          />
+        )}
+        {currentPage === 'support-partners' && (
+          <SupportPartnerView
+            onBack={() => setCurrentPage('home')}
           />
         )}
       </main>
