@@ -55,47 +55,6 @@ export default function HomeWidgets({ onJobClick, onViewAllJobs }) {
           View All Jobs <ArrowRight className="w-5 h-5" />
         </button>
       </section>
-
-      {/* Quick Actions & Departments Grid */}
-      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-        {/* Departments */}
-      {/* <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <Users className="w-6 h-6 text-indigo-600" />
-            Our Departments
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {departments.map((dept, index) => (
-              <div key={index} className="flex items-center p-4 bg-white border border-slate-100 rounded-xl hover:border-indigo-100 hover:shadow-md hover:shadow-indigo-50 transition-all cursor-pointer group">
-                <div className="w-2 h-2 rounded-full bg-indigo-400 mr-3 group-hover:scale-125 transition-transform"></div>
-                <span className="font-medium text-slate-700 group-hover:text-indigo-700 transition-colors">
-                  {dept}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section> */}
-
-      {/* Quick Forms
-        <section>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-            <FileText className="w-6 h-6 text-emerald-600" />
-            Quick Forms
-          </h2>
-          <div className="space-y-3">
-            {forms.map((form, index) => (
-              <a key={index} href="#" className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl hover:border-emerald-100 hover:shadow-md hover:shadow-emerald-50 transition-all group">
-                <span className="font-medium text-slate-700 group-hover:text-emerald-700 transition-colors">
-                  {form}
-                </span>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
-              </a>
-            ))}
-          </div>
-        </section> 
-
-      </div>*/}
     </div>
   );
 }
