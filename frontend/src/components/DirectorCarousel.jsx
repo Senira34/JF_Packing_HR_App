@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import d1 from '../assets/d1.jpg';
+import d2 from '../assets/d2.jpg';
 
-// Placeholder images - in a real app these would be imports
-// For now we will use colored divs if images are missing or simple placeholders
 const directors = [
     {
         id: 1,
         name: "Mr. S.B. Perera",
         title: "Director",
         qualifications: "FCMA/CGMA(UK), B.Sc Mech. Eng. (Hons)",
-        description: "Mr. Shrihan B. Perera was appointed to the Board of JF Packaging Limited on the 20th of February 2025.",
-        image: null // To be replaced
+        description: "Mr. Shrihan B. Perera was appointed to the Board of PrimeFlex Packaging Pvt Ltd on the 20th of February 2025.",
+        image: d1
     },
     {
         id: 2,
         name: "Mr. S. D. R. Arudpragasam",
         title: "Chairman",
         qualifications: "FCMA (UK)",
-        description: "Mr. S. D. R. Arudpragasam was appointed as the Chairman of JF Packaging Limited on 24th August 2017.",
-        image: null // To be replaced
+        description: "Mr. S. D. R. Arudpragasam was appointed as the Chairman of PrimeFlex Packaging Pvt Ltd on 24th August 2017.",
+        image: d2
     }
 ];
 
@@ -63,11 +63,19 @@ export default function DirectorCarousel() {
                                 className="flex flex-col md:flex-row items-center gap-8 md:gap-16"
                             >
                                 {/* Image Side */}
+                                {/* Image Side */}
                                 <div className="w-48 h-56 md:w-64 md:h-72 flex-shrink-0 bg-slate-200 rounded-xl overflow-hidden shadow-inner">
-                                    {/* Placeholder for Director Image */}
-                                    <div className="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100">
-                                        User Image
-                                    </div>
+                                    {directors[currentIndex].image ? (
+                                        <img
+                                            src={directors[currentIndex].image}
+                                            alt={directors[currentIndex].name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100">
+                                            User Image
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Text Side */}
