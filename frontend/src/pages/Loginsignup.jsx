@@ -10,7 +10,7 @@ export default function Loginsignup({ setIsLoggedIn }) {
   const [empNumber, setEmpNumber] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
-    
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (empNumber === VALID_CREDENTIALS.empNumber && password === VALID_CREDENTIALS.password) {
@@ -20,29 +20,29 @@ export default function Loginsignup({ setIsLoggedIn }) {
       setLoginError('Invalid employee number or password');
     }
   };
-    
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex flex-col items-center justify-center p-4">
       <div className="bg-white text-gray-500 max-w-96 mx-4 md:p-6 p-4 text-left text-sm rounded-xl shadow-[0px_0px_10px_0px] shadow-black/10">
         <h2 className="text-2xl font-semibold mb-6 text-center text-gray-800">Welcome back</h2>
         <form onSubmit={handleLogin}>
-          <input 
-            id="empNumber" 
-            className="w-full bg-transparent border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4" 
-            type="text" 
-            placeholder="Enter your employee number" 
+          <input
+            id="empNumber"
+            className="w-full bg-transparent border my-3 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+            type="text"
+            placeholder="Enter your employee number"
             value={empNumber}
             onChange={(e) => setEmpNumber(e.target.value)}
-            required 
+            required
           />
-          <input 
-            id="password" 
-            className="w-full bg-transparent border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4" 
-            type="password" 
-            placeholder="Enter your password" 
+          <input
+            id="password"
+            className="w-full bg-transparent border mt-1 border-gray-500/30 outline-none rounded-full py-2.5 px-4"
+            type="password"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required 
+            required
           />
           {loginError && (
             <div className="my-3 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-center">
@@ -63,6 +63,16 @@ export default function Loginsignup({ setIsLoggedIn }) {
           <img className="h-4 w-4" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/login/googleFavicon.png" alt="googleFavicon" />
           Log in with Google
         </button>
+      </div>
+
+      {/* Project Description Footer */}
+      <div className="mt-8 max-w-4xl text-center px-4">
+        <p className="text-sm text-gray-600 leading-relaxed">
+          "This website has been developed as a 2025 project by Group 14 of the Kelaniya University Master of Business Studies (MBS) program.
+          The primary purpose of the platform is to address and reduce the hidden costs associated with employee recruitment in a flexible packaging company.
+          By providing structured career guidance, training pathways, and role-specific skill requirements, the website aims to minimize skill mismatches,
+          shorten the learning curve of new recruits, and ultimately improve employee retention."
+        </p>
       </div>
     </div>
   )
