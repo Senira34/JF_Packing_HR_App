@@ -135,7 +135,7 @@ export default function FormTemplateView({ formName, onBack }) {
 
                         <div className="mt-12 pt-8 border-t border-slate-100 flex justify-between items-end text-slate-400 text-sm">
                             <div>
-                                <p>JF Packaging Ltd.</p>
+                                <p>PrimeFlex Packaging Pvt Ltd.</p>
                                 <p>Internal Document</p>
                             </div>
                             <div>
