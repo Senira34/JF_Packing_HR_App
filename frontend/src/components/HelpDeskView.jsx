@@ -21,7 +21,7 @@ export default function HelpDeskView({ category, onBack }) {
                                 <h3 className="text-lg font-bold text-indigo-900 mb-2 flex items-center gap-2">
                                     <Mail className="w-5 h-5" /> IT Support Email
                                 </h3>
-                                <p className="text-indigo-700 text-xl font-bold">itsupport@jfpackaging.com</p>
+                                <p className="text-indigo-700 text-xl font-bold">itsupport@primeflexpackaging.com</p>
                                 <p className="text-indigo-600 text-sm mt-1">Response time: &lt; 2 hours</p>
                             </div>
                         </div>
@@ -74,7 +74,7 @@ export default function HelpDeskView({ category, onBack }) {
                                     </li>
                                     <li className="flex items-center gap-3">
                                         <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600"><Mail className="w-4 h-4" /></div>
-                                        <div><p className="font-medium text-slate-800">General HR</p><p className="text-xs text-slate-500">hr@jfpackaging.com</p></div>
+                                        <div><p className="font-medium text-slate-800">General HR</p><p className="text-xs text-slate-500">hr@primeflexpackaging.com</p></div>
                                     </li>
                                 </ul>
                             </div>
@@ -166,14 +166,14 @@ export default function HelpDeskView({ category, onBack }) {
                             <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-6">
                                 <MapPin className="w-10 h-10 text-slate-600" />
                             </div>
-                            <h2 className="text-2xl font-bold text-slate-900 mb-2">JF Packaging Ltd</h2>
+                            <h2 className="text-2xl font-bold text-slate-900 mb-2">PrimeFlex Packaging Pvt Ltd</h2>
                             <p className="text-slate-600 max-w-md mx-auto">No. 123, Industrial Zone, Biyagama, Sri Lanka.</p>
                             <div className="flex justify-center gap-6 mt-6">
                                 <a href="tel:+94112345678" className="flex items-center gap-2 text-slate-700 hover:text-blue-600 font-medium bg-slate-50 px-4 py-2 rounded-lg transition-colors">
                                     <Phone className="w-4 h-4" /> +94 11 234 5678
                                 </a>
-                                <a href="mailto:info@jfpackaging.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600 font-medium bg-slate-50 px-4 py-2 rounded-lg transition-colors">
-                                    <Mail className="w-4 h-4" /> info@jfpackaging.com
+                                <a href="mailto:info@primeflexpackaging.com" className="flex items-center gap-2 text-slate-700 hover:text-blue-600 font-medium bg-slate-50 px-4 py-2 rounded-lg transition-colors">
+                                    <Mail className="w-4 h-4" /> info@primeflexpackaging.com
                                 </a>
                             </div>
                         </div>
