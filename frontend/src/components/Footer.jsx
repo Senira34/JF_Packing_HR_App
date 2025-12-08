@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../assets/logo.png'
 
 export default function Footer() {
   return (
@@ -8,16 +9,15 @@ export default function Footer() {
           {/* Brand Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              {/* Placeholder for Default Logo if available, using text for now as requested */}
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-sm">JF</div>
-              <h3 className="text-lg font-bold">JF Packaging Limited</h3>
+              {/* Logo */}
+              <img src={logo} alt="Packaging Logo" className="h-12 md:h-12 lg:h-12 w-auto brightness-0 invert" />
             </div>
 
             <p className="text-gray-400 mb-3 leading-relaxed text-sm">
               306, Minuwangoda Rd, Kotugoda
             </p>
-            <p className="text-gray-500 text-xs italic">
-              "Ultra Modern Factory, Qualified Highly skilled"
+            <p className="text-gray-500 text-sm italic">
+              "This website has been developed as a <span className='font-bold'>2025 project by Group 14 of the Kelaniya University Master of Business Studies (MBS) program</span>. The primary purpose of the platform is to address and reduce the hidden costs associated with employee recruitment in a flexible packaging company. By providing structured career guidance, training pathways, and role-specific skill requirements, the website aims to minimize skill mismatches, shorten the learning curve of new recruits, and ultimately improve employee retention"
             </p>
           </div>
 
@@ -72,8 +72,8 @@ export default function Footer() {
 
               <div>
                 <h5 className="text-white font-medium mb-1">Contact</h5>
-                <p className="mb-0.5 hover:text-blue-400 transition cursor-pointer">info@jfpackaging.lk</p>
-                <p className="mb-0.5 hover:text-blue-400 transition cursor-pointer">marketing@jfpackaging.lk</p>
+                <p className="mb-0.5 hover:text-blue-400 transition cursor-pointer">info@primeflexpackaging.lk</p>
+                <p className="mb-0.5 hover:text-blue-400 transition cursor-pointer">marketing@primeflexpackaging.lk</p>
                 <p className="text-white mt-1">(+94) 11 22 33 214</p>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-xs">
-          <p>&copy; 2024 JF Packaging Limited. All rights reserved.</p>
+          <p>&copy; 2024 PrimeFlex Packaging Pvt Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>
