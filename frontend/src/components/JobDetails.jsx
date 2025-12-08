@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { Briefcase, ArrowLeft, CheckCircle, Phone, MapPin, Building2, User, X, Upload, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Importing the image directly if using a bundler like Vite usually requires import, or using /src/assets path if public.
-// Since the user is using Vite, standard import is preferred, or absolute path from public.
-// If manage.png is in src/assets, and we are in components, path is ../assets/manage.png.
 import manageImage from '../assets/manager.jpeg';
 
 export default function JobDetail({ selectedJob, onBack }) {
@@ -15,7 +12,7 @@ export default function JobDetail({ selectedJob, onBack }) {
   if (!selectedJob) return null;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 pt-32 font-['Poppins',sans-serif] relative">
+    <div className="max-w-7xl mx-auto px-4 py-12 pt-24 lg:pt-32 font-['Poppins',sans-serif] relative">
       <button
         onClick={onBack}
         className="mb-8 text-slate-600 hover:text-blue-600 flex items-center gap-2 font-medium transition-colors"
@@ -25,13 +22,13 @@ export default function JobDetail({ selectedJob, onBack }) {
       </button>
 
       <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-        <div className="p-8 md:p-10">
+        <div className="p-6 md:p-8 lg:p-10">
           <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
             <div className="p-4 bg-blue-50 rounded-xl">
               <Briefcase className="w-10 h-10 text-blue-600" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-slate-900 mb-2">{selectedJob.title}</h1>
+              <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">{selectedJob.title}</h1>
               <div className="flex flex-wrap gap-3">
                 <span className="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full">
                   {selectedJob.department}
@@ -45,30 +42,52 @@ export default function JobDetail({ selectedJob, onBack }) {
           </div>
 
           <div className="border-t border-slate-100 pt-8">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">Job Description</h2>
-            <p className="text-slate-600 leading-relaxed mb-8">{selectedJob.description}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-8">
+              {/* Left Column: Description & Qualifications */}
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 mb-4">Job Description</h2>
+                <p className="text-slate-600 leading-relaxed mb-8">{selectedJob.description}</p>
 
-            <h2 className="text-xl font-bold text-slate-900 mb-4">Key Responsibilities</h2>
-            <ul className="space-y-3 text-slate-600 mb-8">
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
-                Lead and manage team operations effectively to ensure smooth workflow.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
-                Ensure strict compliance with international quality standards and certifications.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
-                Collaborate with cross-functional teams to drive innovation and efficiency.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
-                Identify areas for improvement and drive continuous improvement initiatives.
-              </li>
-            </ul>
+                {selectedJob.qualifications && selectedJob.qualifications.length > 0 && (
+                  <>
+                    <h2 className="text-xl font-bold text-slate-900 mb-4">Qualifications</h2>
+                    <ul className="space-y-3 text-slate-600 mb-8">
+                      {selectedJob.qualifications.map((qualification, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
+                          {qualification}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
 
-            <div className="flex flex-col lg:flex-row gap-3 pt-4 items-center w-full">
+              {/* Right Column: Key Responsibilities */}
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 mb-4">Key Responsibilities</h2>
+                <ul className="space-y-3 text-slate-600 mb-8">
+                  <li className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
+                    Lead and manage team operations effectively to ensure smooth workflow.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
+                    Ensure strict compliance with international quality standards and certifications.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
+                    Collaborate with cross-functional teams to drive innovation and efficiency.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5"></span>
+                    Identify areas for improvement and drive continuous improvement initiatives.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row gap-3 pt-4 items-center w-full border-t border-slate-100 mt-8">
               <button
                 onClick={() => setShowApplyModal(true)}
                 className="flex-1 w-full lg:w-auto px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-600/20 text-sm whitespace-nowrap justify-center"
@@ -109,7 +128,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl overflow-hidden z-10 flex flex-col md:flex-row"
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto z-10 flex flex-col md:flex-row"
             >
               {/* Left Content Section */}
               <div className="flex-1 p-8">
@@ -218,7 +237,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden z-10"
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto z-10"
             >
               <div className="p-8">
                 <div className="flex justify-between items-center mb-6">
@@ -302,7 +321,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden z-10"
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto z-10"
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
@@ -349,7 +368,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden z-10"
+              className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto z-10"
             >
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
