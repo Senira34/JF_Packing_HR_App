@@ -1,5 +1,6 @@
 import React from 'react'
 import { Home, Users, Briefcase, FileText, HelpCircle, LogOut, ChevronDown, Menu, X } from 'lucide-react'
+import logo from '../assets/logo.png'
 
 export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, setSelectedForm, setSelectedHelpDeskCategory, departments, jobs, forms, helpDeskCategories }) {
     const navLinks = [
@@ -27,7 +28,7 @@ export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, 
         <nav className={`fixed top-0 left-0 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 font-['Poppins',sans-serif] ${isScrolled ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4" : "bg-transparent py-4 md:py-6 text-gray-800"}`}>
             {/* Logo */}
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setCurrentPage('home'); setSelectedJob(null); }}>
-                <h1 className="text-2xl font-bold text-slate-900">JF Packaging HR</h1>
+                <img src={logo} alt="PrimeFlex Packaging Logo" className="h-8 md:h-10 lg:h-12 w-auto transition-all duration-300 background-invert" />
             </div>
 
             {/* Desktop Nav */}
