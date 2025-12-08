@@ -132,11 +132,17 @@ export default function JobDetail({ selectedJob, onBack }) {
             >
               {/* Left Content Section */}
               <div className="flex-1 p-8">
-                <div className="flex justify-between items-start mb-6">
+                <div className="flex justify-between items-start mb-6 w-full">
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900">Support Partner</h3>
                     <p className="text-slate-500">Dedicated support for this role</p>
                   </div>
+                  <button
+                    onClick={() => setShowSupportModal(false)}
+                    className="p-2 hover:bg-slate-100 rounded-full transition-colors md:hidden"
+                  >
+                    <X className="w-6 h-6 text-slate-500" />
+                  </button>
                 </div>
 
                 <div className="space-y-6">
@@ -199,7 +205,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               </div>
 
               {/* Right Image Section */}
-              <div className="w-full md:w-2/5 bg-slate-100 relative min-h-[300px] md:min-h-full">
+              <div className="w-full md:w-2/5 bg-slate-100 relative h-48 md:h-auto md:min-h-full">
                 <img
                   src={manageImage}
                   alt="Manager"
@@ -212,7 +218,7 @@ export default function JobDetail({ selectedJob, onBack }) {
                 </div>
                 <button
                   onClick={() => setShowSupportModal(false)}
-                  className="absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-md"
+                  className="hidden md:block absolute top-4 right-4 p-2 bg-black/20 hover:bg-black/40 text-white rounded-full transition-colors backdrop-blur-md"
                 >
                   <X className="w-5 h-5" />
                 </button>
