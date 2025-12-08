@@ -1,10 +1,15 @@
 import React from 'react';
 import DirectorCarousel from '../components/DirectorCarousel';
+import CompanyFeatures from '../components/CompanyFeatures';
 import { Target, Eye, Leaf } from 'lucide-react';
+import aboutImg from '../assets/about.jpg';
+import ecoImg from '../assets/eco.jpg';
 
 export default function AboutUs() {
     return (
         <div className="min-h-screen bg-white font-['Poppins',sans-serif] pt-20">
+
+            <CompanyFeatures />
 
             {/* 1. Company Overview Section */}
             <section className="relative py-16 md:py-24 overflow-hidden">
@@ -13,13 +18,15 @@ export default function AboutUs() {
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="flex flex-col lg:flex-row items-center gap-12">
-                        {/* Right Image (Visuals) - shown first on mobile for impact, or second on desktop */}
+
                         <div className="w-full lg:w-1/2 lg:order-2">
                             <div className="relative">
-                                {/* Placeholder for the complex composite image of factory/tree/workers */}
-                                <div className="w-full aspect-video bg-gradient-to-tr from-blue-100 to-green-100 rounded-2xl shadow-lg border-4 border-white flex items-center justify-center">
-                                    <span className="text-slate-400 font-medium">Company Overview Visuals</span>
-                                </div>
+
+                                <img
+                                    src={aboutImg}
+                                    alt="Company Overview"
+                                    className="w-full aspect-video object-cover rounded-2xl shadow-lg border-4 border-white"
+                                />
                                 {/* Decorative elements */}
                                 <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-yellow-400/20 rounded-full blur-2xl" />
                             </div>
@@ -28,7 +35,7 @@ export default function AboutUs() {
                         {/* Left Text */}
                         <div className="w-full lg:w-1/2 lg:order-1 space-y-6">
                             <div>
-                                <h2 className="text-lg font-semibold text-slate-500 mb-1">J. F. Packaging Limited</h2>
+                                <h2 className="text-lg font-semibold text-slate-500 mb-1">PrimeFlex Packaging Pvt Ltd</h2>
                                 <h1 className="text-4xl md:text-5xl font-bold text-red-600">Company Overview</h1>
                             </div>
 
@@ -88,7 +95,7 @@ export default function AboutUs() {
                                 Eco-Friendly <Leaf className="w-8 h-8" />
                             </h2>
                             <p className="text-slate-700 leading-relaxed font-medium">
-                                With the latest technology in place, J. F. Packaging Limited has been an environmentally friendly Organization and committed to protect nature for future generations.
+                                With the latest technology in place, PrimeFlex Packaging Pvt Ltd has been an environmentally friendly Organization and committed to protect nature for future generations.
                             </p>
                             <ul className="space-y-4">
                                 {[
@@ -111,10 +118,11 @@ export default function AboutUs() {
                         <div className="w-full lg:w-1/2 flex justify-center">
                             <div className="relative w-full max-w-md">
                                 {/* Placeholder for Tree Machine Graphic */}
-                                <div className="aspect-[4/5] bg-green-50 rounded-3xl border-2 border-green-100 flex flex-col items-center justify-center p-8 text-center">
-                                    <Leaf className="w-24 h-24 text-green-300 mb-4" />
-                                    <span className="text-green-800 font-semibold">Eco-Friendly Process Visual</span>
-                                </div>
+                                <img
+                                    src={ecoImg}
+                                    alt="Eco-Friendly Process"
+                                    className="w-full aspect-[4/5] object-cover rounded-3xl shadow-lg border-2 border-green-100"
+                                />
                             </div>
                         </div>
                     </div>
