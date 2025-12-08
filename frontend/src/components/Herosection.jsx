@@ -26,7 +26,7 @@ export default function Herosection() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.15] mb-6 tracking-tight">
               Empower Your <br className="hidden lg:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-indigo-600">
-                JF Packaging
+                PrimeFlex Packaging Pvt Ltd
               </span>
               <br className="hidden lg:block" />
               Workforce Potential
