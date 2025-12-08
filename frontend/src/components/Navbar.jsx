@@ -164,6 +164,17 @@ export default function Navbar({ setIsLoggedIn, setCurrentPage, setSelectedJob, 
                         )}
                     </div>
                 ))}
+
+                {/* Mobile Logout Button */}
+                <div className="w-full p-4 md:hidden border-t border-slate-100 mt-2">
+                    <button
+                        onClick={() => setIsLoggedIn(false)}
+                        className="w-full flex items-center justify-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 px-6 py-3 rounded-xl font-medium transition-colors"
+                    >
+                        <LogOut className="w-5 h-5" />
+                        Logout
+                    </button>
+                </div>
             </div>
 
             {/* Right Side Buttons */}

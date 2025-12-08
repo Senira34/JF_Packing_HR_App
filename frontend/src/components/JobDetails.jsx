@@ -205,7 +205,7 @@ export default function JobDetail({ selectedJob, onBack }) {
               </div>
 
               {/* Right Image Section */}
-              <div className="w-full md:w-2/5 bg-slate-100 relative h-48 md:h-auto md:min-h-full">
+              <div className="hidden md:block w-full md:w-2/5 bg-slate-100 relative h-auto md:min-h-full">
                 <img
                   src={manageImage}
                   alt="Manager"
