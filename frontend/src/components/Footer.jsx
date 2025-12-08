@@ -60,14 +60,14 @@ export default function Footer() {
             <div className="space-y-4 text-xs text-gray-400">
               <div>
                 <h5 className="text-white font-medium mb-1">Office/Sales</h5>
-                <p>No : 98, Sri Sangaraja Mawatha,</p>
-                <p>Colombo 10, Sri Lanka</p>
+                <p>No : 98, 5th Lane,</p>
+                <p>Colombo 5, Sri Lanka</p>
               </div>
 
               <div>
                 <h5 className="text-white font-medium mb-1">Factory</h5>
-                <p>No 306, Minuwangoda Road,</p>
-                <p>Kotugoda, Sri Lanka</p>
+                <p>No ,</p>
+                <p>Kottawa, Sri Lanka</p>
               </div>
 
               <div>
