@@ -1,8 +1,11 @@
-import React from 'react';
-import { Briefcase, ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Briefcase, ArrowLeft, Youtube } from 'lucide-react';
 import { jobs } from '../data/mockData';
+import TrainMeModal from '../components/TrainMeModal';
 
 export default function Jobs({ onJobClick, onBack }) {
+    const [selectedJobForTraining, setSelectedJobForTraining] = useState(null);
+
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 font-['Poppins',sans-serif]">
             <div className="mb-8">
@@ -19,14 +22,26 @@ export default function Jobs({ onJobClick, onBack }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {jobs.map((job) => (
-                    <div key={job.id} className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all duration-300">
+                    <div key={job.id} className="group bg-white rounded-xl p-6 border border-slate-200 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all duration-300 relative">
                         <div className="flex items-start justify-between mb-4">
                             <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-600 transition-colors duration-300">
                                 <Briefcase className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />
                             </div>
-                            <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full">
-                                {job.department}
-                            </span>
+                            <div className="flex flex-col items-end gap-2">
+                                <span className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full">
+                                    {job.department}
+                                </span>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedJobForTraining(job);
+                                    }}
+                                    className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 text-blue-600 text-xs font-bold rounded-full hover:bg-blue-100 transition-colors border border-blue-100"
+                                >
+                                    <Youtube className="w-3.5 h-3.5" />
+                                    Train Me
+                                </button>
+                            </div>
                         </div>
                         <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                             {job.title}
@@ -43,6 +58,13 @@ export default function Jobs({ onJobClick, onBack }) {
                     </div>
                 ))}
             </div>
+
+            <TrainMeModal
+                isOpen={!!selectedJobForTraining}
+                onClose={() => setSelectedJobForTraining(null)}
+                jobTitle={selectedJobForTraining?.title}
+                videos={selectedJobForTraining?.trainingVideos}
+            />
         </div>
     );
 }

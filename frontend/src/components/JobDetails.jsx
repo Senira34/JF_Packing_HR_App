@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Briefcase, ArrowLeft, CheckCircle, Phone, MapPin, Building2, User, X, Upload, MessageSquare } from 'lucide-react';
+import { Briefcase, ArrowLeft, CheckCircle, Phone, MapPin, Building2, User, X, Upload, MessageSquare, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import manageImage from '../assets/manager.jpeg';
+import TrainMeModal from './TrainMeModal';
 
 export default function JobDetail({ selectedJob, onBack }) {
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [showApplyModal, setShowApplyModal] = useState(false);
   const [showMsgModal, setShowMsgModal] = useState(false);
   const [showCertModal, setShowCertModal] = useState(false);
+  const [showTrainMeModal, setShowTrainMeModal] = useState(false);
 
   if (!selectedJob) return null;
 
@@ -23,22 +25,32 @@ export default function JobDetail({ selectedJob, onBack }) {
 
       <div className="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
         <div className="p-6 md:p-8 lg:p-10">
-          <div className="flex flex-col md:flex-row md:items-start gap-6 mb-8">
-            <div className="p-4 bg-blue-50 rounded-xl">
-              <Briefcase className="w-10 h-10 text-blue-600" />
-            </div>
-            <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">{selectedJob.title}</h1>
-              <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full">
-                  {selectedJob.department}
-                </span>
-                <span className="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
-                  <CheckCircle className="w-3 h-3" />
-                  Full Time
-                </span>
+          <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+            <div className="flex items-start gap-6">
+              <div className="p-4 bg-blue-50 rounded-xl">
+                <Briefcase className="w-10 h-10 text-blue-600" />
+              </div>
+              <div>
+                <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">{selectedJob.title}</h1>
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 bg-slate-100 text-slate-600 text-sm font-medium rounded-full">
+                    {selectedJob.department}
+                  </span>
+                  <span className="px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full flex items-center gap-1">
+                    <CheckCircle className="w-3 h-3" />
+                    Full Time
+                  </span>
+                </div>
               </div>
             </div>
+
+            <button
+              onClick={() => setShowTrainMeModal(true)}
+              className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 active:scale-95 whitespace-nowrap"
+            >
+              <Youtube className="w-5 h-5" />
+              Train Me
+            </button>
           </div>
 
           <div className="border-t border-slate-100 pt-8">
@@ -112,6 +124,13 @@ export default function JobDetail({ selectedJob, onBack }) {
           </div>
         </div>
       </div>
+
+      <TrainMeModal
+        isOpen={showTrainMeModal}
+        onClose={() => setShowTrainMeModal(false)}
+        jobTitle={selectedJob.title}
+        videos={selectedJob.trainingVideos}
+      />
 
       {/* Support Partner Modal */}
       <AnimatePresence>
