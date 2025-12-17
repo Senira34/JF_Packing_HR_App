@@ -46,7 +46,7 @@ export default function JobDetail({ selectedJob, onBack }) {
 
             <button
               onClick={() => setShowTrainMeModal(true)}
-              className="flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 active:scale-95 whitespace-nowrap"
+              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 active:scale-95 whitespace-nowrap"
             >
               <Youtube className="w-5 h-5" />
               Train Me
