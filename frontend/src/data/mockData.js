@@ -33,22 +33,11 @@ export const jobs = [
     trainingVideos: [
       {
         id: 'v1',
-        title: 'Extruder Machine Operation Basics',
-        videoId: '9bZkp7q19f0', // Placeholder YouTube ID
-        thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/hqdefault.jpg'
+        title: 'Starting Up an Extruder Machine',
+        videoId: 'H6KFhqo7qXg',
+        thumbnail: 'https://img.youtube.com/vi/H6KFhqo7qXg/hqdefault.jpg'
       },
-      {
-        id: 'v2',
-        title: 'Safety Procedures for Extruders',
-        videoId: 'LXb3EKWsInQ',
-        thumbnail: 'https://img.youtube.com/vi/LXb3EKWsInQ/hqdefault.jpg'
-      },
-      {
-        id: 'v3',
-        title: 'Advanced Film Extrusion Techniques',
-        videoId: 'p3xsGGyF15E',
-        thumbnail: 'https://img.youtube.com/vi/p3xsGGyF15E/hqdefault.jpg'
-      }
+      
     ]
   },
   {
@@ -70,18 +59,7 @@ export const jobs = [
       'Slitter license from the organization'
     ],
     trainingVideos: [
-      {
-        id: 'v4',
-        title: 'Slitter Machine Setup Guide',
-        videoId: 'EngW7tLk6R8',
-        thumbnail: 'https://img.youtube.com/vi/EngW7tLk6R8/hqdefault.jpg'
-      },
-      {
-        id: 'v5',
-        title: 'Common Slitting Problems & Solutions',
-        videoId: 't0kACis_dJE',
-        thumbnail: 'https://img.youtube.com/vi/t0kACis_dJE/hqdefault.jpg'
-      }
+      
     ]
   },
   {
